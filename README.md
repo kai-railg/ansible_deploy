@@ -1,4 +1,5 @@
-## git clone 之后进入项目目录
+# 开始使用项目
+```git clone git@github.com:kai-railg/ansible_deploy.git && cd ansible_deploy``` 
 - 部署Docker
 ```ansible-playbook -i ./inventory/docker.ini docker_install.yml -K```
 - 部署kubernetes集群
