@@ -1,0 +1,39 @@
+- name: remove docker
+  apt: 
+    name: ["docker", "docker.io", "docker-engine"]
+    state: absent
+  become: yes
+  become_user: root
+  become_method: sudo
+
+- name: pre install
+  apt: 
+    name: ['apt-transport-https', 'ca-certificates', 'curl', 
+'gnupg2', 'software-properties-common']
+    state: present
+  become: yes
+  become_user: root
+  become_method: sudo
+
+
+# - name: add apt-key
+#   shell: "curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add -"
+#   become: yes
+#   become_user: root
+#   become_method: sudo
+
+# - name: add-apt-repository
+#   shell: "add-apt-repository \"deb [arch=amd64] https://mirrors.tuna.tsinghua.edu.cn/docker-ce/linux/ubuntu $(lsb_release -cs) stable\""
+#   become: yes
+#   become_user: root
+#   become_method: sudo
+#   notify:
+#   - update apt
+
+- name: install docker
+  apt: 
+    name: ["docker-ce"]
+    state: present
+  become: yes
+  become_user: root
+  become_method: sudo

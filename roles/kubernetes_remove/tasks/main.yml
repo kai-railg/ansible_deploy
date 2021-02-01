@@ -1,0 +1,29 @@
+- name: kube reset 
+  expect: 
+    echo: yes
+    command: kubeadm reset
+    responses:
+      (?i)proceed: "y"
+    timeout: 30
+  become: yes
+  become_user: root
+  become_method: sudo
+  
+- name: delete .kube
+  file:
+    path: "{{ ansible_user_dir }}/.kube"
+    state: absent
+  become: yes
+  become_user: root
+  become_method: sudo
+
+- name: remove kube* 
+  apt:
+    name: ['kubelet=1.20.2-00', 'kubeadm=1.20.2-00', 'kubectl=1.20.2-00']
+    state: absent
+  become: yes
+  become_user: root
+  become_method: sudo
+
+
+

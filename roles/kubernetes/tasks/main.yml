@@ -1,0 +1,40 @@
+- name: pre install 
+  shell: "{{ item }}"
+  with_items:
+    - curl https://mirrors.aliyun.com/kubernetes/apt/doc/apt-key.gpg | apt-key add -
+    - echo "deb https://mirrors.aliyun.com/kubernetes/apt/ kubernetes-xenial main" > /etc/apt/sources.list.d/kubernetes.list
+    - apt-get update
+    - swapoff -a
+  become: yes
+  become_user: root
+  become_method: sudo
+  
+- name: install kube
+  apt:
+    name: ['kubelet=1.20.2-00', 'kubeadm=1.20.2-00', 'kubectl=1.20.2-00']
+    state: present
+  become: yes
+  become_user: root
+  become_method: sudo
+
+- name: kubeadm init
+  shell: kubeadm init --kubernetes-version=v1.20.2 --image-repository registry.aliyuncs.com/google_containers --pod-network-cidr=10.244.0.0/16
+  become: yes
+  become_user: root
+  become_method: sudo
+
+- name: env kubectl
+  shell: "{{ item }}"
+  with_items:
+    - "mkdir -p {{ ansible_user_dir }}/.kube"
+    - "cp -i /etc/kubernetes/admin.conf {{ ansible_user_dir }}/.kube/config"
+    - "chown {{ ansible_user_uid }}:{{ ansible_user_gid }} {{ ansible_user_dir }}/.kube/config"
+  become: yes
+  become_user: root
+  become_method: sudo
+
+- name: install flannel
+  shell: kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml
+  
+
+

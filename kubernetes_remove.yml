@@ -1,0 +1,6 @@
+---
+
+- hosts: node-master
+  any_errors_fatal: "{{ any_errors_fatal | default(true) }}"
+  roles: 
+    - { role: kubernetes_remove, tags: k8s_remove }
