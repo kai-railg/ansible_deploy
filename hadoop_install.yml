@@ -1,0 +1,10 @@
+- hosts: hadoop-noroot-user
+  any_errors_fatal: "{{ any_errors_fatal | default(true) }}"
+  roles: 
+    - { role: set_root_login }
+
+
+- hosts: hadoop
+  any_errors_fatal: "{{ any_errors_fatal | default(true) }}"
+  roles: 
+    - { role: hadoop, tags: hadoop }

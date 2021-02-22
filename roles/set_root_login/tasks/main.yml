@@ -1,0 +1,13 @@
+- name: set env
+  shell: echo 'PermitRootLogin yes\nUseLogin yes' >> /etc/ssh/sshd_config
+  become: yes
+  become_user: root
+  become_method: sudo
+
+- name: restart sshd
+  service:
+    name: sshd
+    state: restarted
+  become: yes
+  become_user: root
+  become_method: sudo
