@@ -1,5 +1,8 @@
 - name: set env
-  shell: echo 'PermitRootLogin yes\nUseLogin yes' >> /etc/ssh/sshd_config
+  shell: sed -i {{ item }} /etc/ssh/sshd_config 
+  with_items:
+    - '/#UseLogin\ no/c\UseLogin\ yes'
+    - '/#PermitRootLogin\ prohibit-password/c\PermitRootLogin\ yes'
   become: yes
   become_user: root
   become_method: sudo
