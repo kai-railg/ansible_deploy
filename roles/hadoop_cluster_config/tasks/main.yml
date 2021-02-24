@@ -15,3 +15,38 @@
     - yarn-site.xml
     - slaves
 
+- name: stop timedatectl sync time
+  shell: timedatectl set-ntp false
+
+- name: stop ntp
+  service:
+    name: ntp
+    state: stopped
+  when: 
+    - ansible_nodename  != "node-3"
+
+- name: copy ntp.config
+  copy: 
+    src: ntp.conf
+    dest: "/etc/ntp.conf"
+    owner: root
+    group: root
+    mode: 755
+  when:
+    - ansible_nodename == "node-3"
+
+- name: add crontab
+  shell: echo '*/10 * * * * /usr/sbin/ntpdate node3' >> /etc/crontab
+  when: 
+    - ansible_nodename != "node-3"
+
+- name: restart crontab
+  service: 
+    name: cron
+    state: restarted
+
+- name: restart ntp
+  service: 
+    name: ntp
+    state: restarted
+  when: ansible_nodename == "node-3"

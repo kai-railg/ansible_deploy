@@ -5,7 +5,7 @@
 
 - name: install openjdk
   apt: 
-    name: ['openjdk-11-jdk', 'openjdk-11-jdk-headless', 'wget', 'net-tools']
+    name: ['openjdk-11-jdk', 'openjdk-11-jdk-headless', 'wget', 'net-tools', 'ntp', 'ntpdate']
     state: present
 
 - name: download hadoop-2.7.2
@@ -21,4 +21,3 @@
 
 - name: set profile_env
   shell: echo '# hadoop\nexport HADOOP="~/opt/package/hadoop-2.7.2"\nexport PATH="$PATH:$HADOOP/bin:$HADOOP/sbin"' >> /home/kai/.bashrc
-

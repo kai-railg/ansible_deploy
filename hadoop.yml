@@ -4,23 +4,23 @@
 #     - { role: set_root_login }
 
 
-- hosts: hadoop_cluster_config
-  any_errors_fatal: "{{ any_errors_fatal | default(true) }}"
-  roles: 
-    - { role: hadoop_install, tags: hadoop }
+# - hosts: hadoop_cluster_config
+#   any_errors_fatal: "{{ any_errors_fatal | default(true) }}"
+#   roles: 
+#     - { role: hadoop_install, tags: hadoop }
 
 - hosts: hadoop_cluster_config
   any_errors_fatal: "{{ any_errors_fatal | default(true) }}"
   roles: 
     - { role: hadoop_cluster_config, tags: hadoop_cluster_configop }
   
-- hosts: hadoop_start
-  any_errors_fatal: "{{ any_errors_fatal | default(true) }}"
-  roles: 
-    - { role: hadoop_start, tags: hadoop_start }
+# - hosts: hadoop_start
+#   any_errors_fatal: "{{ any_errors_fatal | default(true) }}"
+#   roles: 
+#     - { role: hadoop_start, tags: hadoop_start }
   
-- hosts: hadoop_stop
-  any_errors_fatal: "{{ any_errors_fatal | default(true) }}"
-  roles: 
-    - { role: hadoop_stop, tags: hadoop_stop }
+# - hosts: hadoop_stop
+#   any_errors_fatal: "{{ any_errors_fatal | default(true) }}"
+#   roles: 
+#     - { role: hadoop_stop, tags: hadoop_stop }
   
