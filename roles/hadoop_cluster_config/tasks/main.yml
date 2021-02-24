@@ -15,6 +15,16 @@
     - yarn-site.xml
     - slaves
 
+- name: install sshpass
+  apt:
+    name: sshpass
+    state: present
+
+- name: sync ssh-key
+  script: ssh_copy_id.sh
+  when:
+    - ansible_nodename  == "node-3"
+    
 - name: stop timedatectl sync time
   shell: timedatectl set-ntp false
 
@@ -36,7 +46,7 @@
     - ansible_nodename == "node-3"
 
 - name: add crontab
-  shell: echo '*/10 * * * * /usr/sbin/ntpdate node3' >> /etc/crontab
+  shell: echo '*/10 * * * * /usr/sbin/ntpdate node-3' >> /etc/crontab
   when: 
     - ansible_nodename != "node-3"
 
