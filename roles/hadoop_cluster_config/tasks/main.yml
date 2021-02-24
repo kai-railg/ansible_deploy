@@ -1,0 +1,17 @@
+- name: copy file
+  copy: 
+    src: "{{ item }}"
+    dest: "/home/kai/opt/package/hadoop-2.7.2/etc/hadoop"
+    owner: root
+    group: root
+    mode: 755
+  with_items:
+    - core-site.xml
+    - hadoop-env.sh
+    - hdfs-site.xml
+    - mapred-env.sh
+    - mapred-site.xml
+    - yarn-env.sh
+    - yarn-site.xml
+    - slaves
+

@@ -1,0 +1,6 @@
+
+- name: start dfs
+  shell: stop-dfs.sh
+
+- name: start yarn
+  shell: stop-yarn.sh

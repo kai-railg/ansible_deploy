@@ -1,0 +1,9 @@
+
+- name: format namenode
+  shell: hdfs dfs -format
+
+- name: start dfs
+  shell: start-dfs.sh
+
+- name: start yarn
+  shell: start-yarn.sh
