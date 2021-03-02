@@ -14,6 +14,7 @@
     - yarn-env.sh
     - yarn-site.xml
     - slaves
+    - white.hdfs.hosts
 
 - name: install sshpass
   apt:
