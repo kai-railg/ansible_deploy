@@ -8,3 +8,5 @@
 ```ansible-playbook -i ./inventory/kubernetes.ini kubernetes_remove.yml -K```
 - 部署hadoop集群
 ```ansible-playbook -i ./inventory/hadoop.ini hadoop.yml```
+- hadoop集群中添加spark
+```ansible-playbook -i ./inventory/hadoop.ini spark.yml```

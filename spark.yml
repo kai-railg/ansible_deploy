@@ -1,0 +1,9 @@
+- hosts: spark_install
+  any_errors_fatal: "{{ any_errors_fatal | default(true) }}"
+  roles: 
+    - { role: spark_install, tags: spark }
+
+- hosts: spark_yarn
+  any_errors_fatal: "{{ any_errors_fatal | default(true) }}"
+  roles: 
+    - { role: spark_yarn, tags: spark }

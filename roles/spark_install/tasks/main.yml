@@ -1,0 +1,13 @@
+- name: download spark-3.0.0
+  shell: "wget http://archive.apache.org/dist/spark/spark-3.0.0/spark-3.0.0-bin-hadoop3.2.tgz"
+
+- name: create dir
+  file: 
+    path: "/home/kai/opt/package"
+    state: "directory"
+
+- name: tar spark
+  shell: "tar zxf spark-3.0.0-bin-hadoop3.2.tgz -C /home/kai/opt/package && mv /home/kai/opt/package/spark-3.0.0-bin-hadoop3.2 /home/kai/opt/package/spark"
+
+- name: set profile_env
+  shell: echo '# spark\nexport SPARK="~/opt/package/spark"\nexport PATH="$PATH:$SPARK/bin:$SPARK/sbin"' >> /home/kai/.bashrc

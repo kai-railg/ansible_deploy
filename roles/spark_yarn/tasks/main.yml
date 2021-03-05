@@ -1,0 +1,11 @@
+- name: copy file
+  copy: 
+    src: "{{ item }}"
+    dest: "/home/kai/opt/package/spark/conf"
+    owner: root
+    group: root
+    mode: 755
+  with_items:
+    - spark-env.sh
+    - slaves
+    - spark-defaults.conf
