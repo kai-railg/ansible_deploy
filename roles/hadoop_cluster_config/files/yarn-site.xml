@@ -20,6 +20,14 @@
   <property>
     <name>yarn.resourcemanager.hostname</name>
     <value>node-3</value>
+  <property>
+    <name>yarn.nodemanager.pmem-check-enabled</name>
+    <value>false</value>
+  </property>
+  <property>
+    <name>yarn.nodemanager.vmem-check-enabled</name>
+    <value>false</value>
+  </property>
 </property>
 
 

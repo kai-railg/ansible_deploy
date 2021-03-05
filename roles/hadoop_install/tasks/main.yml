@@ -17,7 +17,7 @@
     state: "directory"
 
 - name: tar hadoop-2.7.2
-  shell: "tar zxf hadoop-2.7.2.tar.gz -C /home/kai/opt/package"
+  shell: "tar zxf hadoop-2.7.2.tar.gz -C /home/kai/opt/package && mv /home/kai/opt/package/hadoop-2.7.2  /home/kai/opt/package/hadoop"
 
 - name: set profile_env
-  shell: echo '# hadoop\nexport HADOOP="~/opt/package/hadoop-2.7.2"\nexport PATH="$PATH:$HADOOP/bin:$HADOOP/sbin"' >> /home/kai/.bashrc
+  shell: echo '# hadoop\nexport HADOOP="~/opt/package/hadoop"\nexport PATH="$PATH:$HADOOP/bin:$HADOOP/sbin"' >> /home/kai/.bashrc

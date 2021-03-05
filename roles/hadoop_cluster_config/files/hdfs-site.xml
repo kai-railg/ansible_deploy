@@ -27,6 +27,6 @@
   </property>
   <property>
     <name>dfs.hosts</name>
-    <value>/home/kai/opt/package/hadoop-2.7.2/etc/hadoop/white.hdfs.hosts</value>
+    <value>/home/kai/opt/package/hadoop/etc/hadoop/white.hdfs.hosts</value>
   </property>
 </configuration>

@@ -23,6 +23,6 @@
   </property> 
   <property>
     <name>hadoop.tmp.dir</name>
-    <value>/home/kai/opt/package/hadoop-2.7.2/data/tmp</value>
+    <value>/home/kai/opt/package/hadoop/data/tmp</value>
 </property>
 </configuration>
